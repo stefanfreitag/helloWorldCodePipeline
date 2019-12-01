@@ -1,16 +1,19 @@
-import cdk = require("@aws-cdk/cdk");
+
 import codecommit = require("@aws-cdk/aws-codecommit");
 import codebuild = require("@aws-cdk/aws-codebuild");
 import codepipeline = require("@aws-cdk/aws-codepipeline");
+import { App, Stack, StackProps, CfnOutput } from '@aws-cdk/core';
+import { CodeCommitSourceAction, CodeBuildAction } from '@aws-cdk/aws-codepipeline-actions';
 
-export class HelloWorldCodePipelineStack extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+export class HelloWorldCodePipelineStack extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props);
 
     const repo = new codecommit.Repository(this, "Repository", {
       repositoryName: "HelloWorldRepository",
       description: "A simple Hello World application."
     });
+
 
     const buildProject = new codebuild.PipelineProject(this, "Build", {
       description: "Build project for the HelloWorld application",
@@ -19,14 +22,16 @@ export class HelloWorldCodePipelineStack extends cdk.Stack {
       }
     });
 
-    const sourceAction = new codecommit.PipelineSourceAction({
+    const sourceOutput = new codepipeline.Artifact();    
+    const sourceAction = new CodeCommitSourceAction({
       branch: "master",
       repository: repo,
-      actionName: "Source"
+      actionName: "Source",
+      output: sourceOutput
     });
 
-    const buildAction = new codebuild.PipelineBuildAction({
-      inputArtifact: sourceAction.outputArtifact,
+    const buildAction = new CodeBuildAction({
+      input: sourceOutput,
       actionName: "Build",
       project: buildProject
     });
@@ -34,15 +39,15 @@ export class HelloWorldCodePipelineStack extends cdk.Stack {
     new codepipeline.Pipeline(this, "Pipeline", {
       pipelineName: "HelloWorldPipeline",
       stages: [
-        { actions: [sourceAction], name: "Source" },
-        { actions: [buildAction], name: "Build" }
+        { actions: [sourceAction], stageName: "Source" },
+        { actions: [buildAction], stageName: "Build" }
       ]
     });
 
-    new cdk.Output(this, "Clone URL (HTTPS)", {
+    new CfnOutput(this, "Clone URL (HTTPS)", {
       value: repo.repositoryCloneUrlHttp
     });
-    new cdk.Output(this, "Clone URL (SSH)", {
+    new CfnOutput(this, "Clone URL (SSH)", {
       value: repo.repositoryCloneUrlSsh
     });
   }
