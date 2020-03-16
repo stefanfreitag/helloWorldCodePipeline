@@ -17,3 +17,4 @@ update_configs:
           update_type: "security"
       - match:
           dependency_name: "aws-cdk"
+          update_type: "all"
