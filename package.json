@@ -11,14 +11,14 @@
   },
   "devDependencies": {
     "@types/node": "13.11.1",
-    "aws-cdk": "^1.32.1",
+    "aws-cdk": "^1.32.2",
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@aws-cdk/aws-codebuild": "^1.32.1",
-    "@aws-cdk/aws-codepipeline": "^1.32.1",
-    "@aws-cdk/aws-codepipeline-actions": "^1.32.1",
-    "@aws-cdk/aws-secretsmanager": "^1.32.1",
+    "@aws-cdk/aws-codebuild": "^1.32.2",
+    "@aws-cdk/aws-codepipeline": "^1.32.2",
+    "@aws-cdk/aws-codepipeline-actions": "^1.32.2",
+    "@aws-cdk/aws-secretsmanager": "^1.32.2",
     "source-map-support": "^0.5.16",
     "yaml": "^1.8.3"
   }
