@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@types/node": "13.11.1",
-    "aws-cdk": "^1.32.1",
+    "aws-cdk": "^1.32.2",
     "typescript": "^3.8.3"
   },
   "dependencies": {
