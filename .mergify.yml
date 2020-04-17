@@ -8,6 +8,8 @@ pull_request_rules:
         request_reviews:
           users:
            - stefanfreitag
+        delete_head_branch: {}
+        dismiss_reviews: {}    
       conditions:
       - status-success=Semantic Pull Request
       - -closed
