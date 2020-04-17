@@ -12,4 +12,5 @@ pull_request_rules:
         dismiss_reviews: {}    
       conditions:
       - status-success=Semantic Pull Request
+      - status-success=Codacy/PR Quality Review 
       - -closed
