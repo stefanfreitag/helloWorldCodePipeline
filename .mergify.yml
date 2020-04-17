@@ -1,0 +1,15 @@
+pull_request_rules:
+    - name: Automatic merge on approval
+      actions:
+        merge:
+          strict: smart
+          method: squash
+          strict_method: merge
+        request_reviews:
+          users:
+           - stefanfreitag
+      conditions:
+      - status-success=Semantic Pull Request
+      - "#approved-reviews-by>=1"
+      - -closed
+      
