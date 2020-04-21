@@ -15,11 +15,11 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@aws-cdk/aws-codebuild": "^1.33.1",
-    "@aws-cdk/aws-codepipeline": "^1.33.1",
-    "@aws-cdk/aws-codepipeline-actions": "^1.33.1",
-    "@aws-cdk/aws-secretsmanager": "^1.33.1",
-    "source-map-support": "^0.5.17",
+    "@aws-cdk/aws-codebuild": "^1.34.0",
+    "@aws-cdk/aws-codepipeline": "^1.34.0",
+    "@aws-cdk/aws-codepipeline-actions": "^1.34.0",
+    "@aws-cdk/aws-secretsmanager": "^1.34.0",
+    "source-map-support": "^0.5.18",
     "yaml": "^1.9.2"
   }
 }
