@@ -10,15 +10,15 @@
     "cdk": "cdk"
   },
   "devDependencies": {
-    "@types/node": "13.13.2",
-    "aws-cdk": "^1.35.0",
+    "@types/node": "13.13.4",
+    "aws-cdk": "^1.36.1",
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@aws-cdk/aws-codebuild": "^1.35.0",
-    "@aws-cdk/aws-codepipeline": "^1.35.0",
-    "@aws-cdk/aws-codepipeline-actions": "^1.35.0",
-    "@aws-cdk/aws-secretsmanager": "^1.35.0",
+    "@aws-cdk/aws-codebuild": "^1.36.1",
+    "@aws-cdk/aws-codepipeline": "^1.36.1",
+    "@aws-cdk/aws-codepipeline-actions": "^1.36.1",
+    "@aws-cdk/aws-secretsmanager": "^1.36.1",
     "source-map-support": "^0.5.19",
     "yaml": "^1.9.2"
   }
