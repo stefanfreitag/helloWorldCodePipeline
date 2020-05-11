@@ -20,37 +20,34 @@ export class HelloWorldCodePipelineStack extends Stack {
       buildSpec: BuildSpec.fromObject({
         version: 0.2,
         phases: {
-            install:{},
-            pre_build: {},
-            build: {},
-            post_build: {}
-
-
+            install:{
+              commands: [
+                "echo Nothing to do in the install phase..."
+              ]              
+            },
+            pre_build: {
+              commands: [
+                "echo Nothing to do in the pre_build phase..."
+              ]
+            },
+            build: {
+              commands: [
+                "echo Build started on `date`",
+                "./gradlew build"
+              ],
+              artifacts: {
+                files: [
+                    "build/libs/HelloWorld-0.0.1.jar"
+                ]
+              }
+            },
+            post_build: {
+              commands: [
+                "Build completed on `date`"
+              ]
+            }
         }
       })
-//version: 0.2
-//
-//phases:
-//  install:
-//    commands:
-//      - echo Nothing to do in the install phase...
-//  pre_build:
-//    commands:
- //     - echo Nothing to do in the pre_build phase...
- // build:
- //   commands:
- //     - echo Build started on `date`
- //     - ./gradlew build
- // post_build:
- //   commands:
- //     - echo Build completed on `date`
-//artifacts:
-//  files:
-//    - build/libs/HelloWorld-0.0.1.jar
-
-
-
-      
     });
 
     const sourceOutput = new codepipeline.Artifact();
