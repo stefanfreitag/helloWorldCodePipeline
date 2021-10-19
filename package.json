@@ -19,7 +19,7 @@
     "@aws-cdk/aws-codepipeline": "1.98.0",
     "@aws-cdk/aws-codepipeline-actions": "1.98.0",
     "@aws-cdk/aws-secretsmanager": "1.98.0",
-    "source-map-support": "0.5.19",
+    "source-map-support": "0.5.20",
     "yaml": "1.10.2"
   }
 }
