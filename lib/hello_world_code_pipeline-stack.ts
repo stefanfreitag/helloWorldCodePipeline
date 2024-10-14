@@ -1,21 +1,18 @@
-import codebuild = require("@aws-cdk/aws-codebuild");
-import codepipeline = require("@aws-cdk/aws-codepipeline");
-import { App, SecretValue, Stack, StackProps } from "@aws-cdk/core";
-import {
-  CodeBuildAction,
-  GitHubSourceAction,
-  GitHubTrigger
-} from "@aws-cdk/aws-codepipeline-actions";
-import { BuildSpec } from "@aws-cdk/aws-codebuild";
+
+import { App, SecretValue, Stack, StackProps } from "aws-cdk-lib";
+import { BuildSpec, LinuxBuildImage, PipelineProject } from "aws-cdk-lib/aws-codebuild";
+import { CodeBuildAction, GitHubSourceAction, GitHubTrigger } from "aws-cdk-lib/aws-codepipeline-actions";
+
+import* as codepipeline from "aws-cdk-lib/aws-codepipeline";
 
 export class HelloWorldCodePipelineStack extends Stack {
   constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const buildProject = new codebuild.PipelineProject(this, "Build", {
+    const buildProject = new PipelineProject(this, "Build", {
       description: "Build project for the HelloWorld application",
       environment: {
-        buildImage: codebuild.LinuxBuildImage.AMAZON_LINUX_2_2
+        buildImage:LinuxBuildImage.AMAZON_LINUX_2_5
       },
       buildSpec: BuildSpec.fromObject({
         version: 0.2,
@@ -71,6 +68,7 @@ export class HelloWorldCodePipelineStack extends Stack {
 
     new codepipeline.Pipeline(this, "Pipeline", {
       pipelineName: "HelloWorldPipeline",
+      pipelineType: codepipeline.PipelineType.V1,
       stages: [
         { actions: [sourceAction], stageName: "Source" },
         { actions: [buildAction], stageName: "Build" }
